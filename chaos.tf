@@ -4,6 +4,10 @@ resource "azurerm_user_assigned_identity" "this" {
   name                = "uai-chaos"
 }
 
+# AzureRM resources for Chaos Studio targets and
+# capabilities timeout, using AzAPI for now
+# https://github.com/hashicorp/terraform-provider-azurerm/issues/27023
+# https://github.com/hashicorp/pandora/issues/4354
 resource "azapi_resource" "chaos_target_agent" {
   body = jsonencode({
     properties = {
